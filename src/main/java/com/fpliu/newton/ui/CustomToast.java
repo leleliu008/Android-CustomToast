@@ -1,7 +1,6 @@
 package com.fpliu.newton.ui;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
@@ -73,8 +72,7 @@ public final class CustomToast {
         return toast;
     }
 
-    public static CustomToast makeText(Context context, int stringId, long duration)
-            throws Resources.NotFoundException {
+    public static CustomToast makeText(Context context, int stringId, long duration) {
         return makeText(context, context.getResources().getText(stringId), duration);
     }
 
@@ -211,12 +209,12 @@ public final class CustomToast {
     /**
      * 根据手机的分辨率从 dip 的单位 转成为 px(像素)
      */
-    private static int dip2px(Context context, double dpValue) {
+    public static int dip2px(Context context, double dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5);
     }
 
-    private static ShapeDrawable getRoundRectShapeDrawable(int color) {
+    public static ShapeDrawable getRoundRectShapeDrawable(int color) {
         float r = 10;
         float[] outerR = new float[]{r, r, r, r, r, r, r, r};
         RoundRectShape rr = new RoundRectShape(outerR, null, null);
