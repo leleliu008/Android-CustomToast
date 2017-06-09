@@ -1,4 +1,4 @@
-package com.fpliu.newton.ui;
+package com.fpliu.newton.ui.toast;
 
 import android.content.Context;
 import android.graphics.Color;
