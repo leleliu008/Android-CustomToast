@@ -29,8 +29,11 @@ public final class CustomToast {
     public static final long LENGTH_LONG = 3500;
 
     private long duration = LENGTH_SHORT;
+
     private WindowManager windowManager;
+
     private LinearLayout rootView;
+
     private OnDismissListener onDismissListener;
 
     public CustomToast(Context context) {
@@ -41,13 +44,7 @@ public final class CustomToast {
         rootView = new LinearLayout(context);
 
         // 背景设置为圆角矩形
-        float r = 10;
-        float[] outerR = new float[]{r, r, r, r, r, r, r, r};
-        RoundRectShape rr = new RoundRectShape(outerR, null, null);
-        ShapeDrawable drawable = new ShapeDrawable(rr);
-        drawable.getPaint().setColor(Color.BLACK);
-
-        setBackground(drawable);
+        setBackground(getRoundRectShapeDrawable(Color.parseColor("#BA000000")));
     }
 
     public CustomToast setBackground(Drawable drawable) {
@@ -73,16 +70,6 @@ public final class CustomToast {
         textView.setTextColor(Color.WHITE);
         textView.setTextSize(16);
         toast.setView(textView);
-
-        // 背景设置为圆角矩形
-        float r = 10;
-        float[] outerR = new float[]{r, r, r, r, r, r, r, r};
-        RoundRectShape rr = new RoundRectShape(outerR, null, null);
-        ShapeDrawable drawable = new ShapeDrawable(rr);
-        drawable.getPaint().setColor(Color.parseColor("#BA000000"));
-
-        toast.setBackground(drawable);
-
         return toast;
     }
 
@@ -124,15 +111,6 @@ public final class CustomToast {
         layout.addView(textView);
 
         toast.setView(layout);
-
-        // 背景设置为圆角矩形
-        float r = 10;
-        float[] outerR = new float[]{r, r, r, r, r, r, r, r};
-        RoundRectShape rr = new RoundRectShape(outerR, null, null);
-        ShapeDrawable drawable = new ShapeDrawable(rr);
-        drawable.getPaint().setColor(Color.parseColor("#BA000000"));
-
-        toast.setBackground(drawable);
 
         return toast;
     }
@@ -183,7 +161,7 @@ public final class CustomToast {
     }
 
     public void show() {
-        show(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 100);
+        show(Gravity.CENTER_HORIZONTAL | Gravity.CENTER, 0, 0);
     }
 
     private LayoutParams getDefaultLayoutParams() {
@@ -236,6 +214,15 @@ public final class CustomToast {
     private static int dip2px(Context context, double dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5);
+    }
+
+    private static ShapeDrawable getRoundRectShapeDrawable(int color) {
+        float r = 10;
+        float[] outerR = new float[]{r, r, r, r, r, r, r, r};
+        RoundRectShape rr = new RoundRectShape(outerR, null, null);
+        ShapeDrawable drawable = new ShapeDrawable(rr);
+        drawable.getPaint().setColor(color);
+        return drawable;
     }
 
     public interface OnDismissListener {

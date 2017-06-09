@@ -59,10 +59,10 @@ apply plugin: 'com.jfrog.bintray'
 version = "1.0.0"
 
 // 项目的主页,这个是说明，可随便填
-def siteUrl = 'https://github.com/xanthuim'
+def siteUrl = 'https://github.com/leleliu008/Android-CustomToast'
 
 // GitHub仓库的URL,这个是说明，可随便填
-def gitUrl = 'https://github.com/xanthuim'
+def gitUrl = 'https://github.com/leleliu008/Android-CustomToast'
 
 // 这里是groupId,必须填写,一般填你唯一的包名
 group = "com.fpliu"
@@ -130,9 +130,9 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        userOrg = "xanthuimsoft"
-        repo = "maven"
-        name = "mylibrary"
+        userOrg = "fpliu"
+        repo = "newton"
+        name = "Android-CustomToast"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
