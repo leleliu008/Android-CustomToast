@@ -173,7 +173,8 @@ public final class CustomToast {
                 | LayoutParams.FLAG_NOT_FOCUSABLE
                 | LayoutParams.FLAG_NOT_TOUCHABLE
                 | LayoutParams.FLAG_KEEP_SCREEN_ON;
-        lp.type = LayoutParams.TYPE_TOAST;
+        //lp.type = LayoutParams.TYPE_TOAST;  由于小米、魅族等自带了手机管家，使用TYPE_TOAST需要申请权限
+        lp.type = LayoutParams.TYPE_APPLICATION_PANEL;
         // 此值必须设置为透明，否则圆角处会有黑色
         lp.format = PixelFormat.TRANSLUCENT;
         // 显示动画，此处必须是系统的样式资源
